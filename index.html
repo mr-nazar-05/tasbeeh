@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasbeeh Counter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #d8a89f, #e8c0b8);
+      font-family: Arial, sans-serif;
+    }
+    
+    .tasbeeh-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f4ebe7;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .tasbeeh-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .tasbeeh-dropdown {
+      font-size: 16px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    .tasbeeh-button {
+      background: #d9a69d;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .tasbeeh-button:hover {
+      background: #d1938b;
+    }
+
+    .counter-circle {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at center, #3c3c3c, #000);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .counter-circle .arabic-text {
+      position: absolute;
+      top: 30px;
+      color: #7fffd4;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .counter-circle .count-number {
+      font-size: 60px;
+    }
+
+    .icons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .icons button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    .count-info {
+      position: absolute;
+      bottom: 10px;
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 480px) {
+      .tasbeeh-container {
+        padding: 15px;
+      }
+
+      .counter-circle {
+        width: 180px;
+        height: 180px;
+      }
+
+      .counter-circle .count-number {
+        font-size: 48px;
+      }
+
+      .tasbeeh-title {
+        font-size: 20px;
+        padding: 0px;
+      }
+
+      .tasbeeh-dropdown {
+        font-size: 14px;
+      }
+
+      .tasbeeh-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tasbeeh-container">
+    <div class="tasbeeh-title">
+       <h1>Tasbeehat</h1>
+    </div>
+    
+    <!-- Dropdown menu for Ibadat options -->
+    <select id="ibadatOptions" class="tasbeeh-dropdown" onchange="updatePhrase()">
+      <option value="سُبْحَانَ ٱللَّٰهِ">Subhan Allah (سُبْحَانَ ٱللَّٰهِ)</option>
+      <option value="الحمد للہ">Alhamdulillah (الحمد للہ)</option>
+      <option value="الله أكبر">Allahu Akbar (الله أكبر)</option>
+      <option value="لا إله إلا الله">La ilaha illallah (لا إله إلا الله)</option>
+      <option value="استغفر الله">Astaghfirullah (استغفر الله)</option>
+      <option value="يا الله">Ya Allah (يا الله)</option>
+      <option value="لا حول و لا قوة إلا بالله">La hawla wa la quwwata illa billah (لا حول و لا قوة إلا بالله)</option>
+      <option value="اللهم صل على محمد وعلى آل محمد">Allahumma salli 'ala Muhammad wa 'ala aali Muhammad (اللهم صل على محمد وعلى آل محمد)</option>
+    </select>
+
+    <div class="counter-circle" onclick="incrementCounter()">
+      <div id="phraseDisplay" class="arabic-text">بِسْمِ ٱللَّٰهِ</div>
+      <div id="counterDisplay" class="count-number">0</div>
+      <div class="icons">
+        <button onclick="resetCounter()">⟳</button>
+      </div>
+      <div class="count-info">1/41</div>
+    </div>
+
+    <button class="tasbeeh-button" onclick="resetCounter()">Reset Counter</button>
+  </div>
+
+  <script>
+    let counter = 0;
+
+    function incrementCounter() {
+      counter++;
+      document.getElementById('counterDisplay').textContent = counter;
+    }
+
+    function resetCounter() {
+      counter = 0;
+      document.getElementById('counterDisplay').textContent = counter;
+    }
+
+    function updatePhrase() {
+      const phrase = document.getElementById('ibadatOptions').value;
+      document.getElementById('phraseDisplay').textContent = phrase;
+      resetCounter(); // Optionally reset the counter when phrase changes
+    }
+  </script>
+</body>
+</html>
