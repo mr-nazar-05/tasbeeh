@@ -8,7 +8,7 @@
     * {
       box-sizing: border-box;
     }
-    
+
     body {
       display: flex;
       justify-content: center;
@@ -18,7 +18,7 @@
       background: linear-gradient(135deg, #d8a89f, #e8c0b8);
       font-family: Arial, sans-serif;
     }
-    
+
     .tasbeeh-container {
       display: flex;
       flex-direction: column;
@@ -36,6 +36,7 @@
       font-weight: bold;
       margin-bottom: 20px;
       text-align: center;
+      line-height: 1.2;
     }
 
     .tasbeeh-dropdown {
@@ -80,13 +81,25 @@
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       cursor: pointer;
+      text-align: center;
+      user-select: none;
+      outline: none; /* Remove focus outline */
+      -webkit-tap-highlight-color: transparent; /* Prevent mobile click highlight */
+    }
+
+    /* Prevent any active state or visual feedback on click */
+    .counter-circle:active {
+      background: radial-gradient(circle at center, #3c3c3c, #000); /* Keep background consistent */
     }
 
     .counter-circle .arabic-text {
       position: absolute;
-      top: 30px;
+      top: 20px;
       color: #7fffd4;
-      font-size: 24px;
+      font-size: 20px;
+      padding: 0 10px;
+      line-height: 1.2;
+      white-space: normal;
       text-align: center;
     }
 
@@ -109,7 +122,7 @@
       font-size: 18px;
       cursor: pointer;
     }
-    
+
     .count-info {
       position: absolute;
       bottom: 10px;
@@ -128,13 +141,16 @@
         height: 180px;
       }
 
+      .counter-circle .arabic-text {
+        font-size: 18px;
+      }
+
       .counter-circle .count-number {
         font-size: 48px;
       }
 
       .tasbeeh-title {
         font-size: 20px;
-        padding: 0px;
       }
 
       .tasbeeh-dropdown {
@@ -150,8 +166,12 @@
 </head>
 <body>
   <div class="tasbeeh-container">
+    <!-- Title with line breaks -->
     <div class="tasbeeh-title">
-       <p> <h1>Tasbeehat</h1> <br>by <br>Wisdom of Life <br>Educational and Welfare Society</p>
+      Tasbeehat<br>
+      by<br>
+      Wisdom of Life<br>
+      Educational and Society Welfare
     </div>
     
     <!-- Dropdown menu for Ibadat options -->
