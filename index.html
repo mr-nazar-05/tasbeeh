@@ -27,8 +27,8 @@
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       text-align: center;
-      width: 90%; /* Make container responsive */
-      max-width: 350px; /* Max width for larger screens */
+      width: 90%;
+      max-width: 350px;
     }
 
     select {
@@ -57,7 +57,8 @@
       cursor: pointer;
       user-select: none;
       position: relative;
-      touch-action: manipulation; /* Prevents click animation response */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .circle .tasbeeh-text {
@@ -98,7 +99,11 @@
   </style>
 </head>
 <body>
-  <h1>Tasbeehat</h1>
+  <h1>Roohani ilaaj</h1>
+  <p>by</p>
+  <h1>Wisdom of Life</h1>
+  <p>Education and Welfare Society</p>
+
   <div class="tasbeeh-container">
     <select id="tasbeehSelect" onchange="updateTasbeeh()">
       <option value="iman">ایمان کی حفاظت</option>
@@ -144,14 +149,48 @@
       bimari: {
         text: "يَا سَلَامُ",
         description:
-          "111 بار پڑھ کر بیمار پر دم کرنے سے ان شاء اللہ عَزَّ وَجَل شفا حاصل ہوگی ۔",
+          "111 بار پڑھ کر بیمار پر دم کرنے سے ان شاء الله عَزَّ وَجَلَّ شفا حاصل ہوگی۔",
       },
       gham: {
         text: "يَا مُهَيْمِنُ",
         description:
-          " بار جو کوئی غمزدہ روزانہ پڑھ لے ان شاء اللہ عَزَّ وَجَلَّ اُس کا غم دور ہو، نیز ان شاء الله عَزَّ وَجَلَّ آفتوں اور بلاؤں سے بھی محفوظ رہے ۔",
+          "29 بار جو کوئی غمزدہ روزانہ پڑھ لے ان شاء الله عَزَّ وَجَلَّ اُس کا غم دور ہو، نیز ان شاء الله عَزَّ وَجَلَّ آفتوں اور بلاؤں سے بھی محفوظ رہے۔",
       },
-      // Add the rest of the Tasbeeh data here...
+      bala: {
+        text: "يا الله",
+        description:
+          "100 بار سوتے وقت پڑھنے سے ان شاء الله عَزَّ وَجَلَّ شیاطین کی شرارت و فالج اور لقوے کی آفت سے حفاظت ہو گی۔",
+      },
+      afsar: {
+        text: "يَا عَزِيزُ",
+        description:
+          "41 بار حاکم یا افسر وغیرہ کے پاس جانے سے قبل پڑھ لیجئے ان شاء الله عَزَّ وَجَلَّ وہ حاکم یا افسر مہربان ہو جائے گا۔",
+      },
+      khwab: {
+        text: "يَا مُتَكَبِّرُ",
+        description:
+          "21 بار روزانہ پڑھ لیجئے، ڈراؤنے خواب آتے ہوں گے تو ان شاء الله عَزَّ وَجَلَّ نہیں آئیں گے۔",
+      },
+      uladSaleh: {
+        text: "يَا مُتَكَبِّرُ",
+        description:
+          "زوجہ سے ملاپ سے قبل 10 بار پڑھ لینے والا ان شاء الله عز وجل نیک بیٹے کا باپ بنے گا۔",
+      },
+      uladNarenah: {
+        text: "يَا بَارِئُ",
+        description:
+          "10 بار جو کوئی ہر جمعہ کو پڑھ لیا کرے اِن شاءَ اللہ عَزَّ وَجَلَّ اُس کو بیٹا عطا ہوگا۔",
+      },
+      mushkil: {
+        text: "يَا قَهَّارُ",
+        description:
+          "100 بار اگر کوئی مصیبت آ پڑے تو پڑھتے ان شاء الله عَزَّ وجل مشکل آسان ہوگی۔",
+      },
+      dua: {
+        text: "يَا وَهَّاب",
+        description:
+          "سات بار جو روزانہ پڑھا کرے گا ان شاء الله عَزَّ وَجَلَّ مستجاب الدعوات ہوگا (یعنی اس کی دعائیں قبول ہوا کریں گی )",
+      },
     };
 
     function updateTasbeeh() {
